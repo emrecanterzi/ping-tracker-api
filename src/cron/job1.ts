@@ -8,15 +8,24 @@ const data = JSON.parse(
 
 export default {
   // add a job
-  name: "job1", // a name for job
-  patern: "*/3 * * * * *", // cron job patern
+  name: data.title, // a name for job
+  patern: data.delay == "3_SEC" ? "*/3 * * * * *" : "*/10 * * * * *", // cron job patern
   fn: async () => {
     try {
-      const res = await axios.get(data.url);
-      // function
+      const res = await axios(data.url, {
+        method: data.method,
+        timeout: data.maxResponseTime,
+      });
       console.log(res.status);
+      if (res.status !== data.expectedStatus) {
+        // status error here
+      }
+
+      // fs.writeFileSync("test.json", JSON.stringify(res.headers));
     } catch (err) {
-      console.log(err);
+      if (String(err).match(/timeout/gim)) {
+        console.log("timeout error");
+      }
     }
   },
 };

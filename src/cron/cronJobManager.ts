@@ -1,4 +1,4 @@
-import CronJobManager from "cron-manager-node"; // import package
+const CronJobManager = require("cron-manager-node");
 import job1 from "./job1";
 
 const cronJobManager = new CronJobManager();
