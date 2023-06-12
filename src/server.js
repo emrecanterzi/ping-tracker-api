@@ -5,11 +5,11 @@ const path = require("path");
 const { default: mongoose } = require("mongoose");
 
 dotenv.config({
-  path: path.join(__dirname, "env", ".env"),
+  path: path.join(__dirname, "config", ".env"),
 });
 
 const PORT = process.env.PORT || 3000;
-const MONGO_URI = "mongodb://localhost:27017/test";
+const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017/test";
 
 const server = http.createServer(app);
 
