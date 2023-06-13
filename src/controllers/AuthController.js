@@ -23,7 +23,7 @@ class AuthController {
   static logout = expressAsyncHandler(async (req, res) => {
     const response = await logoutService();
 
-    res.json(response);
+    res.clearCookie("token").json(response);
   });
 
   static register = expressAsyncHandler(async (req, res) => {
@@ -44,7 +44,8 @@ class AuthController {
   });
 
   static getProfile = expressAsyncHandler(async (req, res) => {
-    const response = await getProfileService();
+    const user = req.user;
+    const response = await getProfileService(user);
 
     res.json(response);
   });

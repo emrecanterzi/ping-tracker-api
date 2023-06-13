@@ -7,9 +7,6 @@ const authRouter = express.Router();
 authRouter.route("/login").post(AuthController.login);
 authRouter.route("/logout").post(AuthController.logout);
 authRouter.route("/register").post(AuthController.register);
-authRouter
-  .route("/profile")
-  .all(authMiddleware)
-  .post(AuthController.getProfile);
+authRouter.route("/profile").all(authMiddleware).get(AuthController.getProfile);
 
 module.exports.authRouter = authRouter;
