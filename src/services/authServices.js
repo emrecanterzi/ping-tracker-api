@@ -1,5 +1,6 @@
 const CustomError = require("../error/CustomError");
 const { User } = require("../models/UserModel");
+const { userIdGenerator } = require("../utils/uniqueKeyGenerators");
 const { validateEmail } = require("../utils/validators");
 
 const loginService = async ({ email, password }) => {
@@ -24,7 +25,13 @@ const registerService = async ({ email, firstName, lastName, password }) => {
   if (!validateEmail(email)) {
     throw new CustomError({ status: 400, message: "EMAIL_IS_NOT_VALID" });
   }
-  const user = new User({ email, firstName, lastName, password });
+  const user = new User({
+    userId: userIdGenerator(),
+    email,
+    firstName,
+    lastName,
+    password,
+  });
 
   await user.save();
 
