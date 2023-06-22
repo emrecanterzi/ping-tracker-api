@@ -40,6 +40,10 @@ const JobSchema = new mongoose.Schema({
     type: Boolean, // true
     default: true,
   },
+  isDeleted: {
+    type: Boolean, // true
+    default: false,
+  },
 });
 
 module.exports.Job = mongoose.model("Job", JobSchema);

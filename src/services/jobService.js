@@ -3,13 +3,13 @@ const { Job } = require("../models/JobModel");
 const { jobIdGenerator } = require("../utils/uniqueKeyGenerators");
 
 const getJobsService = async ({ userId }) => {
-  const jobs = await Job.find({ userId });
+  const jobs = await Job.find({ userId, isDeleted: false });
 
   return { success: true, data: jobs };
 };
 
 const getJobByJobIdService = async ({ userId, jobId }) => {
-  const job = await Job.findOne({ userId, jobId });
+  const job = await Job.findOne({ userId, jobId, isDeleted: false });
 
   if (!job) {
     throw new CustomError({ status: 404, message: "JOB_NOT_FOUND" });
@@ -38,6 +38,7 @@ const createJobService = async ({
     delay,
     method,
     isActive,
+    isDeleted: false,
   });
 
   await job.save();
@@ -57,7 +58,7 @@ const updateJobByJobIdService = async ({
   isActive,
 }) => {
   const job = await Job.findOneAndUpdate(
-    { jobId, userId },
+    { jobId, userId, isDeleted: false },
     {
       title,
       url,
@@ -78,7 +79,11 @@ const updateJobByJobIdService = async ({
 };
 
 const removeJobByJobIdService = async ({ jobId, userId }) => {
-  const job = await Job.findOneAndDelete({ userId, jobId });
+  const job = await Job.findOneAndUpdate(
+    { userId, jobId },
+    { isDeleted: true, isActive: false },
+    { new: true }
+  );
 
   if (!job) {
     throw new CustomError({ status: 404, message: "JOB_NOT_FOUND" });
