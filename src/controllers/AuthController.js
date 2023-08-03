@@ -17,7 +17,7 @@ class AuthController {
       expireDay: Date.now() + 1000 * 60 * 60 * 24,
     });
 
-    res.cookie("token", token).json(response);
+    res.cookie("token", token).json({ ...response, token });
   });
 
   static logout = expressAsyncHandler(async (req, res) => {
@@ -40,7 +40,7 @@ class AuthController {
       expireDay: Date.now() + 1000 * 60 * 60 * 24,
     });
 
-    res.cookie("token", token).json(response);
+    res.cookie("token", token).json({ ...response, token });
   });
 
   static getProfile = expressAsyncHandler(async (req, res) => {
