@@ -15,7 +15,7 @@ const authMiddleware = expressAsyncHandler(async (req, res, next) => {
 
   // if(data.createdTime){ } // ! check token expiration
 
-  req.user = await User.findOne({ playerId: data.playerId });
+  req.user = await User.findOne({ email: data.email });
 
   next();
 });
