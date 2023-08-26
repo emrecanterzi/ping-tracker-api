@@ -20,7 +20,13 @@ mongoose.connect(MONGO_URI, {
 
 mongoose.connection.on("connected", () => {
   console.log("mongodb connected");
-  server.listen(PORT, () => {
-    console.log(`server listening http://localhost:${PORT}`);
-  });
+  startServer();
 });
+
+function startServer() {
+  if (!server.listening) {
+    server.listen(PORT, () => {
+      console.log(`server listening http://localhost:${PORT}`);
+    });
+  }
+}
