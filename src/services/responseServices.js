@@ -9,7 +9,11 @@ const getResponseIdsService = async ({ userId }) => {
 };
 
 const getResponsesService = async ({ userId, jobId }) => {
-  const responses = await Response.find({ userId, jobId });
+  const responses = await Response.find({
+    userId,
+    jobId,
+    date: { $gt: Date.now() - 1000 * 60 * 60 * 24 },
+  });
 
   return { success: true, data: responses };
 };
