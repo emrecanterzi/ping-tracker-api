@@ -1,8 +1,0 @@
-{
-  "title": "job1",
-  "url": "https://foodergood.com",
-  "expectedStatus": 200,
-  "maxResponseTime": 500,
-  "delay": "3_SEC",
-  "method": "GET"
-}
