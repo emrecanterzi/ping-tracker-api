@@ -35,6 +35,7 @@ class JobController {
       delay,
       method,
       isActive,
+      requestBody,
     } = req.body;
 
     const response = await createJobService({
@@ -46,6 +47,7 @@ class JobController {
       delay,
       method,
       isActive,
+      requestBody,
     });
 
     res.json(response);
@@ -62,6 +64,7 @@ class JobController {
       delay,
       method,
       isActive,
+      requestBody,
     } = req.body;
 
     const response = await updateJobByJobIdService({
@@ -74,6 +77,7 @@ class JobController {
       delay,
       method,
       isActive,
+      requestBody,
     });
 
     res.json(response);
