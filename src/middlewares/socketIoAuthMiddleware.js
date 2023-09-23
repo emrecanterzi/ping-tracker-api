@@ -4,7 +4,11 @@ const { decodeToken } = require("../utils/jwtHelper");
 
 const socketIoAuthMiddleware = async (socket, next) => {
   const token =
-    (socket.request.headers.token || socket.handshake.auth.token)
+    (
+      socket.request.headers.cookie ||
+      socket.request.headers.token ||
+      socket.handshake.auth.token
+    )
       ?.split("=")[1]
       ?.split(";")[0] ||
     socket.request.headers.token ||
