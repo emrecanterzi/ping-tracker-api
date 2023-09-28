@@ -33,6 +33,10 @@ const ResponseSchema = new mongoose.Schema({
     type: Object,
     default: {},
   },
+  requestHeaders: {
+    type: Object,
+    default: {},
+  },
 });
 
 module.exports.Response = mongoose.model("Response", ResponseSchema);
