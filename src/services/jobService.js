@@ -28,6 +28,7 @@ const createJobService = async ({
   method,
   isActive,
   requestBody,
+  requestHeaders,
 }) => {
   const job = new Job({
     userId,
@@ -40,6 +41,7 @@ const createJobService = async ({
     method,
     isActive,
     requestBody,
+    requestHeaders,
     isDeleted: false,
   });
 
@@ -59,6 +61,7 @@ const updateJobByJobIdService = async ({
   method,
   isActive,
   requestBody,
+  requestHeaders,
 }) => {
   const job = await Job.findOneAndUpdate(
     { jobId, userId, isDeleted: false },
@@ -71,6 +74,7 @@ const updateJobByJobIdService = async ({
       method,
       isActive,
       requestBody,
+      requestHeaders,
     },
     { new: true }
   );
