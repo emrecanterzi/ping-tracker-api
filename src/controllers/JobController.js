@@ -36,6 +36,7 @@ class JobController {
       method,
       isActive,
       requestBody,
+      requestHeaders,
     } = req.body;
 
     const response = await createJobService({
@@ -48,6 +49,7 @@ class JobController {
       method,
       isActive,
       requestBody,
+      requestHeaders,
     });
 
     res.json(response);
@@ -65,6 +67,7 @@ class JobController {
       method,
       isActive,
       requestBody,
+      requestHeaders,
     } = req.body;
 
     const response = await updateJobByJobIdService({
@@ -78,6 +81,7 @@ class JobController {
       method,
       isActive,
       requestBody,
+      requestHeaders,
     });
 
     res.json(response);
