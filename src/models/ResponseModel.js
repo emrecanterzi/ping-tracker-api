@@ -37,6 +37,14 @@ const ResponseSchema = new mongoose.Schema({
     type: Object,
     default: {},
   },
+  responseBody: {
+    type: Object,
+    default: {},
+  },
+  responseHeaders: {
+    type: Object,
+    default: {},
+  },
 });
 
 module.exports.Response = mongoose.model("Response", ResponseSchema);
