@@ -16,8 +16,14 @@ class ResponseController {
   static getResponses = expressAsyncHandler(async (req, res) => {
     const { userId } = req.user;
     const { jobId } = req.params;
+    const { startDate, endDate } = req.query;
 
-    const response = await getResponsesService({ userId, jobId });
+    const response = await getResponsesService({
+      userId,
+      jobId,
+      startDate,
+      endDate,
+    });
 
     res.json(response);
   });
