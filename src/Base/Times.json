@@ -1,0 +1,22 @@
+[
+  {
+    "timeId": "time_01",
+    "label": "1 min",
+    "cronExpression": "0 */1 * * * *"
+  },
+  {
+    "timeId": "time_02",
+    "label": "3 min",
+    "cronExpression": "0 */3 * * * *"
+  },
+  {
+    "timeId": "time_03",
+    "label": "5 min",
+    "cronExpression": "0 */5 * * * *"
+  },
+  {
+    "timeId": "time_04",
+    "label": "10 min",
+    "cronExpression": "0 */10 * * * *"
+  }
+]

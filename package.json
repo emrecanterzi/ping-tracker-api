@@ -22,6 +22,7 @@
     "express-async-handler": "^1.2.0",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.2.3",
+    "mongoose-seed-manager": "^1.0.1",
     "socket.io": "^4.7.2"
   },
   "devDependencies": {

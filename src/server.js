@@ -10,6 +10,7 @@ const {
   socketIoMiddlewareErrorHandler,
 } = require("./error/SocketErrorHandler");
 const { Response } = require("./models/ResponseModel");
+const { SeedDataManager } = require("mongoose-seed-manager");
 
 dotenv.config({
   path: path.join(__dirname, "config", ".env"),
@@ -28,8 +29,13 @@ mongoose.connect(MONGO_URI, {
   useUnifiedTopology: true,
 });
 
+const seedDataManager = new SeedDataManager(path.join(__dirname, "Base"), [
+  mongoose.connection,
+]);
+
 mongoose.connection.on("connected", () => {
   console.log("mongodb connected");
+  seedDataManager.init();
   startServer();
 });
 
