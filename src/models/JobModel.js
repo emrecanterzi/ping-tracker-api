@@ -28,7 +28,6 @@ const JobSchema = new mongoose.Schema({
   },
   delay: {
     type: String, //"3_SEC"
-    enum: ["3_SEC", "10_SEC"],
     required: true,
   },
   method: {
